@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, MouseEvent } from 'react';
 import { SpringConfig } from '@react-spring/three';
+import { Options as ResizeOptions } from 'react-use-measure';
 
 export const DEFAULT_GROUP = 'DEFAULT_GROUP';
 
@@ -101,18 +102,18 @@ export type ControlOptionsColor = {
   inline?: boolean;
   /* What kind of picker. Default Chrome */
   picker?:
-    | 'chrome'
-    | 'sketch'
-    | 'hue'
-    | 'alpha'
-    | 'block'
-    | 'github'
-    | 'twitter'
-    | 'circle'
-    | 'material'
-    | 'compact'
-    | 'slider'
-    | 'swatches';
+  | 'chrome'
+  | 'sketch'
+  | 'hue'
+  | 'alpha'
+  | 'block'
+  | 'github'
+  | 'twitter'
+  | 'circle'
+  | 'material'
+  | 'compact'
+  | 'slider'
+  | 'swatches';
   /* Disable alpha */
   disableAlpha?: boolean;
   /* Custom set of colors */
@@ -127,6 +128,8 @@ export type ControlOptionsXYPad = {
   distance?: number;
   /* Scrub value in both directions */
   scrub?: boolean;
+  /* Resize config, see react-use-measure's options */
+  resize?: ResizeOptions
 };
 
 export type ControlOptionsCustom = {

@@ -17,7 +17,7 @@ export const XYPadControl = ({
 }: ControlComponentProps<ControlOptionsXYPad>) => {
   const stage = useRef(null);
   const { distance = 1, scrub = false } = options;
-  const [ref, { width, height }] = useMeasure();
+  const [ref, { width, height }] = useMeasure(options.resize);
 
   const [cursor, setCursor] = useSpring(
     () => ({

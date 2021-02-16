@@ -3,7 +3,7 @@ import { ControlsProvider, Canvas } from './controls-provider';
 import styled from 'styled-components';
 import { animated, useSpring, to } from '@react-spring/web';
 import { useDrag } from 'react-use-gesture';
-import useMeasure from 'react-use-measure';
+import useMeasure, { Options as ResizeOptions } from 'react-use-measure';
 import { clamp } from '../utils';
 import { DEFAULT_GROUP } from '../types';
 import { ControlsContext } from '../contexts/controls-context';
@@ -54,6 +54,10 @@ export interface ControlsProps {
    * Styles
    */
   style?: any;
+  /**
+   * Resize config, see react-use-measure's options
+   */
+  resize?: ResizeOptions
 }
 
 function posProps(positions: ControlsAnchor[]) {
@@ -173,6 +177,7 @@ export const Controls: ControlsFn = (props: ControlsProps) => {
     width = 300,
     style = {},
     anchor = ControlsAnchor.TOP_RIGHT,
+    resize
   } = props;
   const { controls } = useContext(ControlsContext);
   const [collapsed, setCollapsed] = useLocalStorage(
@@ -183,7 +188,7 @@ export const Controls: ControlsFn = (props: ControlsProps) => {
     `REACT_THREE_GUI__${anchor}`,
     [0, 0]
   );
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure(resize);
   const [{ pos }, setPos] = useSpring(() => ({
     pos: position,
     onRest({ value }) {
