@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, MouseEvent } from 'react';
 import { SpringConfig } from '@react-spring/three';
+import { Options as ResizeOptions } from 'react-use-measure';
 
 export const DEFAULT_GROUP = 'DEFAULT_GROUP';
 
@@ -107,6 +108,8 @@ export type ControlOptionsXYPad = {
   distance?: number;
   /* Scrub value in both directions */
   scrub?: boolean;
+  /* Resize config, see react-use-measure's options */
+  resize?: ResizeOptions
 };
 
 export type ControlOptionsCustom = {
